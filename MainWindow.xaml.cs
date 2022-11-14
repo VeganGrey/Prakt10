@@ -34,9 +34,15 @@ namespace Prakt10
             {
                 Int32.TryParse(Chisl.Text, out int chisl);
                 if (chisl < -100 || chisl > 100) throw new ArgumentException("Не попадает в интервал");
-                foreach(int i in mas) if(chisl == i) throw new ArgumentException("Повторяющееся число");
+                foreach (int i in mas) if (chisl == i)
+                {
+                        Chisl.Text = null;
+                        throw new ArgumentException("Повторяющееся число");
+                }
                 mas.Add(chisl);
                 listBox.Items.Add(chisl);
+                Chisl.Text = null;
+                Chisl.Focus();
             }
             catch
             {
